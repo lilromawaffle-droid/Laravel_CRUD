@@ -12,7 +12,7 @@ class SiswaController extends Controller
     use ValidatesRequests;
     public function index()
     {
-        $data['siswa'] = \App\Siswa::orderBy('jenkel')->get();
+        $data['siswa'] = \App\Siswa::orderBy('jk')->get();
         return view('belajar', $data);
     }
 
@@ -26,8 +26,8 @@ class SiswaController extends Controller
         $rule = [
             'nis' => 'required|numeric',
             'nama_lengkap' => 'required|string',
-            'jenkel' => 'required',
-            'goldar' => 'required',
+            'jk' => 'required',
+            'golongan_darah' => 'required',
         ];
         $this->validate($request, $rule);
 
@@ -37,8 +37,8 @@ class SiswaController extends Controller
         $siswa = new \App\Siswa;
         $siswa->nis = $input['nis'];
         $siswa->nama_lengkap = $input['nama_lengkap'];
-        $siswa->jenkel = $input['jenkel'];
-        $siswa->goldar = $input['goldar'];
+        $siswa->jk = $input['jk'];
+        $siswa->golongan_darah = $input['golongan_darah'];
         $status = $siswa->save();
 
         if ($status) {
@@ -59,8 +59,8 @@ class SiswaController extends Controller
         $rule = [
             'nis' => 'required|numeric',
             'nama_lengkap' => 'required|string',
-            'jenkel' => 'required',
-            'goldar' => 'required',
+            'jk' => 'required',
+            'golongan_darah' => 'required',
         ];
         $this->validate($request, $rule);
           
@@ -70,8 +70,8 @@ class SiswaController extends Controller
         $siswa = \App\Siswa::find($id);
         $siswa->nis = $input['nis'];
         $siswa->nama_lengkap = $input['nama_lengkap'];
-        $siswa->jenkel = $input['jenkel'];
-        $siswa->goldar = $input['goldar'];
+        $siswa->jk = $input['jk'];
+        $siswa->golongan_darah = $input['golongan_darah'];
         $status = $siswa->update(); 
         // Catatan: Pada gambar 4 baris 69-70 menunjukkan penggunaan mass assignment:
         // $status = $siswa->update($input); 

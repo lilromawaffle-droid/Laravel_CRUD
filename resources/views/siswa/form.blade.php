@@ -47,10 +47,10 @@
             Golongan Darah:
                 <select name="golongan_darah" id="">
                     <option value="">Pilih Golongan darah</option>    
-                    <option value="A"  {{ old('golongan_darah', @$siswa ->golongan_darah ) == 'A' ? "selected" : "" }}>A</option>
-                    <option value="B"  {{ old('golongan_darah', @$siswa ->golongan_darah ) == 'B' ? "selected" : "" }}>B</option>
-                    <option value="AB" {{ old('golongan_darah', @$siswa ->golongan_darah ) =='AB'  ? "selected" : "" }}>AB</option>
-                    <option value="O"  {{ old('golongan_darah', @$siswa ->golongan_darah ) == 'O' ? "selected" : "" }}>O</option>
+                    <option value="A"  {{ old('goldar', @$siswa ->golongan_darah ) == 'A' ? "selected" : "" }}>A</option>
+                    <option value="B"  {{ old('goldar', @$siswa ->golongan_darah ) == 'B' ? "selected" : "" }}>B</option>
+                    <option value="AB" {{ old('goldar', @$siswa ->golongan_darah ) =='AB'  ? "selected" : "" }}>AB</option>
+                    <option value="O"  {{ old('goldar', @$siswa ->golongan_darah ) == 'O' ? "selected" : "" }}>O</option>
                 </select> <br>
                 <input type="submit" value="Simpan">
         </form>

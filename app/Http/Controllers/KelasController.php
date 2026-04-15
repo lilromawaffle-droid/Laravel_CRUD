@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Kelas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -13,7 +14,7 @@ class KelasController extends Controller
         
         //$tabel =DB::table('t_kelas')->orderBy('nama_kelas','ASC')->get();
         //return view('kelas',compact('tabel'));  
-        $data ['kelas'] =\Kelas::orderBy('nama_kelas')->get();
+        $data ['kelas'] = \App\Kelas::orderBy('nama_kelas')->get();
         return view ('kelas',$data);
         }
     
@@ -35,8 +36,7 @@ class KelasController extends Controller
         $input = $request->all();
         //unset($input['_token']);
         //$status = DB::table('t_kelas')->insert($input);
-        $status = App\Kelas::create($input);
-
+        $status = \App\Kelas::create($input);
         if ($status){
               return redirect('/kelas') ->with('succes','Data yang anda masukan berhasil di tambahkan tekan tambah data untuk memasukan data lagi');
         }else{
@@ -49,25 +49,30 @@ class KelasController extends Controller
         return view ('kelas.form', compact('tabel'));
     }
     
-    function update (Request $request, $id){
+    function update(Request $request, $id)
+    {
         $rule = [
-        'nama_wali_kelas'=>'required|string',
-        'lokasi_kelas'=> ['required', 'regex:/^[A-Z][1-2][0-9]$/'] ,
-        'jurusan'=>'required',
-        'nama_kelas'=>'required',
+            'nama_wali_kelas' => 'required|string',
+            'lokasi_kelas'    => ['required', 'regex:/^[A-Z][1-2][0-9]$/'],
+            'jurusan'         => 'required',
+            'nama_kelas'      => 'required',
         ];
-        
-        $this->validate($request,$rule);
+        $this->validate($request, $rule);
 
-        $input = $request ->all();
-        //unset($input['_token'] );
-        //unset($input['_method'] );
-        //$status = DB::table('t_kelas')->where('id',$id)->update($input);
+        $input = $request->all();
 
-        if ($status){
-            return redirect('/kelas') ->with('succes','Data berhasil di ubah');
-        }else{
-            return redirect('/kelas/edit/'.$id) ->with('error','Data gagal di ubah');
+        // ORM Eloquent 
+        $kelas = \App\Kelas::find($id);
+        $kelas->nama_wali_kelas = $input['nama_wali_kelas'];
+        $kelas->lokasi_kelas    = $input['lokasi_kelas'];
+        $kelas->jurusan         = $input['jurusan'];
+        $kelas->nama_kelas      = $input['nama_kelas'];
+        $status = $kelas->update();
+
+        if ($status) {
+            return redirect('/kelas')->with('success', 'Data berhasil diubah');
+        } else {
+            return redirect('/kelas/edit/' . $id)->with('error', 'Data gagal diubah');
         }
     }
 
