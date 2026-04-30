@@ -30,6 +30,15 @@ Route::patch('/kelas/{id}',[kelasController::class,'update']);
 Route::delete('/kelas/{id}',[KelasController::class,'destroy']);
 
 
+use App\Http\Controllers\GuruController;
+
+Route::get('/guru',             [GuruController::class, 'index']);
+Route::get('/guru/create',      [GuruController::class, 'create']);
+Route::post('/guru',            [GuruController::class, 'store']);
+Route::get('/guru/edit/{id}',   [GuruController::class, 'edit']);
+Route::patch('/guru/{id}',      [GuruController::class, 'update']);
+Route::delete('/guru/{id}',     [GuruController::class, 'destroy']);
+
 Route::get('/contoh', [KelasController::class,'routeSatu']);
 Route::get('/contoh_lagi', [KelasController::class,'routeDua']);
 Route::get('/contoh_terakhir', [KelasController::class,'routeTiga']);
