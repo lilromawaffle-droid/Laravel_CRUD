@@ -84,7 +84,7 @@ class KelasController extends Controller
             return redirect('/kelas') ->with('error','Data gagal di hapus');
         }   
     }
-
+    
     
     
     

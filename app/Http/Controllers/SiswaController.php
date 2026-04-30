@@ -73,9 +73,7 @@ class SiswaController extends Controller
         $siswa->jk = $input['jk'];
         $siswa->golongan_darah = $input['golongan_darah'];
         $status = $siswa->update(); 
-        // Catatan: Pada gambar 4 baris 69-70 menunjukkan penggunaan mass assignment:
-        // $status = $siswa->update($input); 
-        // Anda bisa menggunakan salah satunya sesuai preferensi.
+
 
         if ($status) {
             return redirect('/siswa')->with('success', 'Data berhasil diubah');

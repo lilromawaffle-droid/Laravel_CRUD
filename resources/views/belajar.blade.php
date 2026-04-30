@@ -13,7 +13,7 @@ Belajar Laravel, Tulisan ini ditampilkan dari Views<br>
     @endsession
 
 <a href="{{ url ('/siswa/create') }}">Tambah data</a>
-{{-- <a href="{{ url ('/namaroute') }}">Tambah data</a> --}}
+
 <table border="1">
     <tr>
         <td>No</td>
