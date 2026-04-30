@@ -7,14 +7,19 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 
+
 class KelasController extends Controller
 {
     use ValidatesRequests;
     public function index(){
         
+    $table = 't_kelas';
+
+    // Kolom yang boleh diisi via create() atau update()
+
         //$tabel =DB::table('t_kelas')->orderBy('nama_kelas','ASC')->get();
         //return view('kelas',compact('tabel'));  
-        $data ['kelas'] = \App\Kelas::orderBy('nama_kelas')->get();
+        $data ['t_kelas'] = \App\Kelas::orderBy('nama_kelas')->get();
         return view ('kelas',$data);
         }
     

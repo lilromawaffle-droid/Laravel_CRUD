@@ -35,7 +35,7 @@
                 <td colspan="2" >aksi</td>  
             </tr>  
             
-            @foreach ($tabel as $row )
+            @foreach ($t_kelas as $row )
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{$row -> jurusan}}</td>
